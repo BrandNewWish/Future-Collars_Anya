@@ -1,0 +1,241 @@
+#=====================LISTS===================
+
+my_list = []
+my_list1 = [1, 2, 5, "Marek", "Wisniewski", True, False]
+
+print(my_list)
+print(my_list1)
+
+#Get by index
+
+firstnames= ["John", "Jack", "Mark", "Will", "Angelina"]
+print(firstnames)
+print(firstnames[0])
+print(firstnames[1])
+
+startname_index = 2
+
+print(firstnames[startname_index])
+print(firstnames[startname_index + 1])
+print(firstnames[startname_index + 2])
+
+print(firstnames[-1])
+print(firstnames[-2])
+
+print(len(firstnames))
+
+print(f"{firstnames[0]}, {firstnames[1]}")
+
+print()
+
+#Iterate over list
+
+for index in [0, 1, 2, 3, 4]:
+    print(index)
+
+print()
+
+for firstname in firstnames:
+    print(f"Name: {firstname}")
+
+#append to the end
+
+print(firstnames)
+firstnames.append("Eve")
+print(firstnames)
+firstnames[1] = "Peter"
+print(firstnames)
+
+#insert inside
+
+firstnames.insert( 4, "Anna")
+print(firstnames)
+
+#adding lists
+
+firstnames_female = ["Anna", "Angelina", "Eve"]
+firstnames_male = ["John", "Peter", "Mark", "Will"]
+firstnames_all = firstnames_female + firstnames_male
+
+print(firstnames_all)
+
+#remove by index
+del firstnames_all[3]
+print(firstnames_all)
+
+#remove by content
+firstnames_all.remove("Mark")
+print(firstnames_all)
+
+firstnames2 = ["Anna", "Angelina", "Eve", "John", "Peter", "Mark", "Will", "John"]
+print(firstnames2)
+firstnames2.remove("John")
+print(firstnames2)
+
+
+#searching element in collection
+firstnames3 = ["Anna", "Angelina", "Eve", "John", "Peter", "Mark", "Will", "John"]
+print(firstnames3.index("John", 0))
+index_of_last_john = firstnames3.index("John", 4)
+print(index_of_last_john)
+del firstnames3[index_of_last_john]
+print(firstnames3)
+
+
+
+#containment testing
+if "Jacob" in firstnames3:
+    print("Jacob is in firstnames3")
+else:
+    print("Jacob is not in firstnames3")
+
+
+if "John" not in firstnames3:
+    print("John is not in firstnames3")
+else:
+    print("John is in firstnames3")
+
+
+#Lists in boolean context
+sample_list = []
+print(bool(sample_list))
+sample_list = [""]
+print(bool(sample_list)) #True, because list contains (empty ) OBJECT
+sample_list = ["aaaa"]
+print(bool(sample_list))
+
+if sample_list:
+    print("List has elements")
+else:
+    print("List is empty")
+
+
+#========================TUPLES===============
+my_tuple = (1, 2, 5, "Marek", "Wisniewski", True, False)
+print(my_tuple)
+
+tuple_inside_of_list = [(1, 2), (3, 4), (5, 6)]
+print(tuple_inside_of_list)
+print(tuple_inside_of_list[0])
+
+list_inside_of_tuple = ([1, 2], [3, 4], 5)
+print(list_inside_of_tuple)
+
+print(my_tuple.index("Marek"))
+print(5 in my_tuple)
+
+#my_tuple.append("aaa") <- prohibited
+# my_tuple[3] = "aaaa"
+tuple_element = list_inside_of_tuple[0]
+print(tuple_element)
+tuple_element.append(1)
+tuple_element[0] = 8
+print(list_inside_of_tuple)
+
+
+#Changing collection type
+print(my_tuple)
+my_list = list(my_tuple)
+print(my_list)
+
+my_tuple = tuple(my_list)
+print(my_tuple)
+
+
+#assigning multiple variables in one line using tuples
+# a = 1
+# b = 2
+a,b = 1, 2 #the same as above
+
+fullnames = [
+    ("Marek", "Wisniewski"),
+    ("John", "Doe"),
+    ("Peter", "Smith")
+]
+
+for firstname, lastname in fullnames:
+    print("{} {}".format(firstname, lastname))
+
+
+firstnames = ["John", "Jack", "Mark", "Will", "Angelina"]
+firstnames_enumerated = list(enumerate(firstnames))
+print(firstnames_enumerated)
+
+
+for index, firstname in enumerate(firstnames):
+    print(f"{index}: {firstname}")
+
+#Hashable, id
+a = 1
+print(id(a))
+
+a = a + 1
+print(id(a)) #Id is different, because we "redeclare" variable
+
+#Hashable: int, float, string, tuples (only when contain base types)
+
+my_list = [1, 2, 3]
+print(id(my_list))
+
+my_list.append(4)
+my_list.append(5)
+print(id(my_list)) #Id is the same
+
+
+
+
+
+#=============================================SETS====================
+sample_set = {"a", "x", 1, 2, True, (1, 2, 3)}
+print(sample_set)
+sample_set.add("c")
+sample_set.add("c")
+sample_set.add("c")
+print(sample_set)
+
+
+sample_set.remove("a")
+print(sample_set)
+
+
+print("a" in sample_set)
+print("a" not in sample_set)
+
+for element in sample_set:
+    print(element)
+
+# print(sample_set([0]) <-  prohibited
+
+
+
+#=================================Dictionaries==================
+sample_dict = { #key value
+    "a": 1,
+    "b": 123,
+    "c": "something",
+    "xyz": 222
+}
+
+print(sample_dict)
+print(sample_dict["a"])
+print(sample_dict["b"])
+
+sample_dict["a"] += 1
+
+print(sample_dict)
+
+print("a" in sample_dict)  # check if key exists
+print(123 in sample_dict.values())  # check if value exists
+
+del sample_dict["a"]
+print(sample_dict)
+
+print()
+
+for k in sample_dict:
+    print("{}: {}".format(k, sample_dict[k]))
+
+print()
+
+for k, v in sample_dict.items():
+    print("{}: {}".format(k, v))
